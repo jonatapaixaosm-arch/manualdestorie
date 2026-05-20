@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Stories para Iniciantes — Contew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --neon:#D4FF00;
+    --black:#000;
+    --ink:#0a0a0a;
+    --card:#141414;
+    --line:#262626;
+    --white:#fff;
+    --muted:#9a9a9a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--black);
+    color:var(--white);
+    font-family:'Archivo',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.5px;line-height:.98;text-transform:uppercase}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .neon{color:var(--neon)}
+
+  /* decorative giant C watermark */
+  .bg-c{
+    position:absolute;font-family:'Anton',sans-serif;color:#0e0e0e;
+    font-size:clamp(400px,55vw,900px);line-height:1;z-index:0;
+    user-select:none;pointer-events:none;
+  }
+
+  /* HERO */
+  .hero{position:relative;padding:70px 0 80px;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .bg-c{top:-80px;right:-120px}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+  .badge{display:inline-block;background:var(--neon);color:var(--black);font-weight:800;
+    font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:7px 14px;border-radius:4px;margin-bottom:22px}
+  h1.display{font-size:clamp(42px,6.2vw,78px)}
+  .hero p.sub{font-size:clamp(17px,2vw,21px);color:#dcdcdc;margin-top:22px;max-width:540px}
+  .hero .price-line{margin-top:30px;font-size:15px;color:var(--muted)}
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;background:var(--neon);color:var(--black);
+    font-weight:800;font-size:18px;text-transform:uppercase;letter-spacing:.5px;
+    padding:18px 34px;border-radius:8px;text-decoration:none;margin-top:18px;
+    transition:transform .25s ease, box-shadow .25s ease;border:none;cursor:pointer;
+  }
+  .cta:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(212,255,0,.25)}
+  .cta.big{font-size:20px;padding:22px 44px}
+  .hero-visual{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);background:linear-gradient(160deg,#1a1a1a,#000)}
+  .mock-cover{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:40px 30px;position:relative}
+  .mock-cover .bg-c{top:50%;left:50%;transform:translate(-50%,-50%);font-size:520px;color:#161616}
+  .mock-cover h2{position:relative;z-index:2;font-size:46px;color:#fff}
+  .mock-cover .tag{position:relative;z-index:2;color:var(--neon);font-weight:800;margin-top:auto;font-size:22px;font-family:'Anton'}
+
+  section{padding:80px 0;position:relative}
+  .eyebrow{color:var(--neon);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+  h2.sec{font-size:clamp(30px,4.5vw,52px);margin-bottom:18px}
+  .lead{font-size:18px;color:#cfcfcf;max-width:680px}
+
+  /* PROBLEM */
+  .problem{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
+  .pain{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px;display:flex;gap:16px;align-items:flex-start}
+  .pain .x{color:var(--neon);font-family:'Anton';font-size:26px;line-height:1;flex:0 0 auto}
+  .pain p{color:#dcdcdc;font-size:16px}
+
+  /* TURN */
+  .turn .lead{margin-bottom:8px}
+  .turn-list{margin-top:36px;display:grid;gap:14px}
+  .turn-item{display:flex;gap:16px;align-items:flex-start;font-size:17px;color:#eaeaea}
+  .turn-item .chk{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--neon);
+    color:#000;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px;margin-top:2px}
+
+  /* INSIDE */
+  .inside{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .modules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+  .mod{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:24px;transition:border-color .25s,transform .25s}
+  .mod:hover{border-color:var(--neon);transform:translateY(-4px)}
+  .mod .num{font-family:'Anton';color:var(--neon);font-size:30px;line-height:1}
+  .mod h3{font-size:18px;margin:10px 0 6px;font-weight:700}
+  .mod p{color:var(--muted);font-size:14px}
+  .pages-note{margin-top:34px;display:inline-flex;align-items:center;gap:12px;background:var(--card);
+    border:1px solid var(--line);border-radius:10px;padding:14px 20px;font-size:15px;color:#dcdcdc}
+  .pages-note b{color:var(--neon)}
+
+  /* BONUS */
+  .bonus-box{background:linear-gradient(135deg,#1c1c1c,#0d0d0d);border:1px solid var(--neon);
+    border-radius:16px;padding:44px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;margin-top:20px}
+  .bonus-tag{font-family:'Anton';font-size:clamp(60px,9vw,120px);color:var(--neon);line-height:.8;text-transform:uppercase}
+  .bonus-box h3{font-size:26px;margin-bottom:10px}
+  .bonus-box p{color:#cfcfcf;font-size:16px}
+
+  /* AUTHORITY */
+  .authority{background:var(--ink);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .auth-grid{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+  .auth-logo{font-family:'Anton';font-size:80px;color:var(--neon);text-transform:uppercase}
+
+  /* PRICE */
+  .price-sec{text-align:center}
+  .price-card{max-width:520px;margin:40px auto 0;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:48px 40px;position:relative;overflow:hidden}
+  .price-card .bg-c{top:50%;left:50%;transform:translate(-50%,-50%);font-size:420px;color:#191919}
+  .price-card>*{position:relative;z-index:2}
+  .price-old{color:var(--muted);text-decoration:line-through;font-size:20px}
+  .price-now{font-family:'Anton';font-size:84px;color:var(--neon);line-height:1;margin:6px 0}
+  .price-now small{font-size:28px;vertical-align:super}
+  .price-desc{color:#cfcfcf;margin-bottom:8px}
+  .guarantee{margin-top:26px;font-size:14px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:8px}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;cursor:pointer}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:18px}
+  .faq-q .plus{color:var(--neon);font-family:'Anton';font-size:26px;transition:transform .3s}
+  .faq-a{color:var(--muted);font-size:16px;max-height:0;overflow:hidden;transition:max-height .35s ease,margin .35s ease}
+  .faq-item.open .faq-a{max-height:200px;margin-top:14px}
+  .faq-item.open .plus{transform:rotate(45deg)}
+
+  /* FOOTER */
+  footer{background:var(--black);padding:60px 0 40px;text-align:center;border-top:1px solid var(--line)}
+  footer .logo{font-family:'Anton';font-size:48px;color:var(--neon);text-transform:uppercase}
+  footer a{color:var(--muted);text-decoration:none}
+  footer .small{color:#555;font-size:13px;margin-top:20px}
+
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-visual{max-width:340px;margin:0 auto}
+    .pain-grid{grid-template-columns:1fr}
+    .modules{grid-template-columns:1fr}
+    .bonus-box{grid-template-columns:1fr;gap:18px;text-align:center;padding:32px}
+    .auth-grid{grid-template-columns:1fr;text-align:center}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="bg-c">e</div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">Manual digital · Contew</span>
+      <h1 class="display">Pare de travar<br>toda vez que abre<br>a <span class="neon">câmera.</span></h1>
+      <p class="sub">O guia visual que ensina, do zero, a usar os Stories do Instagram com segurança. Feito para quem nunca soube por onde começar.</p>
+      <a href="#comprar" class="cta">Quero o manual →</a>
+      <div class="price-line">Acesso imediato · Pagamento único · Bônus incluído</div>
+    </div>
+    <div class="hero-visual">
+      <div class="mock-cover">
+        <div class="bg-c">e</div>
+        <h2 class="display">Manual de Stories para Iniciantes</h2>
+        <span class="tag">Contew</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="wrap">
+    <div class="eyebrow">Se você se identifica</div>
+    <h2 class="sec">Abrir os Stories não devia ser tão confuso.</h2>
+    <p class="lead">A maioria dos tutoriais assume que você já sabe o básico. Resultado: você abre a câmera, fica perdido entre os ícones e desiste antes de postar.</p>
+    <div class="pain-grid">
+      <div class="pain"><span class="x">✕</span><p>Você não sabe a diferença entre Boomerang, Layout e Mãos Livres, então nunca usa nenhum.</p></div>
+      <div class="pain"><span class="x">✕</span><p>As figurinhas, enquetes e links parecem complicados e você tem medo de errar na frente de todo mundo.</p></div>
+      <div class="pain"><span class="x">✕</span><p>Você até tenta, mas o texto fica torto, a música não encaixa e o resultado parece amador.</p></div>
+      <div class="pain"><span class="x">✕</span><p>Já procurou no YouTube, mas os vídeos são longos, desorganizados e nunca respondem exatamente sua dúvida.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TURN -->
+<section class="turn">
+  <div class="wrap">
+    <div class="eyebrow">O que muda</div>
+    <h2 class="sec">Um mapa completo dos botões, na ordem certa.</h2>
+    <p class="lead">Cada função explicada em três partes: o que é, como usar passo a passo e quando usar de verdade. Linguagem simples, prints reais e orientações práticas.</p>
+    <div class="turn-list">
+      <div class="turn-item"><span class="chk">✓</span><div>Você entende cada modo de câmera e sabe exatamente qual usar em cada situação.</div></div>
+      <div class="turn-item"><span class="chk">✓</span><div>Domina texto, música, figurinhas, filtros e desenho sem medo de errar.</div></div>
+      <div class="turn-item"><span class="chk">✓</span><div>Aprende recursos que quase ninguém ensina, como Amigos Próximos e a biblioteca completa de filtros.</div></div>
+      <div class="turn-item"><span class="chk">✓</span><div>Posta com mais segurança e seus Stories deixam de parecer amadores.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIDE -->
+<section class="inside">
+  <div class="wrap">
+    <div class="eyebrow">O que tem dentro</div>
+    <h2 class="sec">36 páginas, do primeiro toque ao avançado.</h2>
+    <div class="modules">
+      <div class="mod"><div class="num">01</div><h3>O básico sem pular etapa</h3><p>O que é um Story, configuração inicial e como criar pelas 3 formas diferentes.</p></div>
+      <div class="mod"><div class="num">02</div><h3>A tela de câmera</h3><p>Boomerang, Layout, Mãos Livres e quando usar cada modo na prática.</p></div>
+      <div class="mod"><div class="num">03</div><h3>Edição completa</h3><p>Texto, música, figurinhas, filtros e desenho à mão livre, um por um.</p></div>
+      <div class="mod"><div class="num">04</div><h3>Recursos avançados</h3><p>Amigos Próximos, editar e excluir, configurações e a biblioteca de filtros escondida.</p></div>
+      <div class="mod"><div class="num">05</div><h3>Orientações de uso</h3><p>Boas práticas de design em cada seção para seus Stories ficarem profissionais.</p></div>
+      <div class="mod"><div class="num">06</div><h3>Glossário completo</h3><p>Todos os termos do Instagram explicados, para consultar sempre que precisar.</p></div>
+    </div>
+    <div class="pages-note">📄 Material em PDF de alta qualidade · <b>acesso vitalício</b> · leia no celular ou computador</div>
+  </div>
+</section>
+
+<!-- BONUS -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Bônus incluído</div>
+    <div class="bonus-box">
+      <div class="bonus-tag">+1</div>
+      <div>
+        <h3>Guia de Métricas de Stories</h3>
+        <p>Um PDF extra que ensina a entender os números dos seus Stories: visualizações, alcance, interações e o que cada métrica realmente diz sobre o seu conteúdo. Para você sair do "achismo" e começar a postar com direção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section class="authority">
+  <div class="wrap auth-grid">
+    <div class="auth-logo">e</div>
+    <div>
+      <div class="eyebrow">Quem fez</div>
+      <h2 class="sec" style="font-size:34px">Feito pela Contew.</h2>
+      <p class="lead">Criamos este manual depois de perceber, com nossos próprios clientes, a mesma dificuldade se repetindo: gente travada na hora de usar os Stories. Reunimos o que ensinamos no dia a dia da agência em um material direto, visual e fácil de seguir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-sec" id="comprar">
+  <div class="wrap">
+    <div class="eyebrow">Comece hoje</div>
+    <h2 class="sec">Tudo isso por menos que um lanche.</h2>
+    <div class="price-card">
+      <div class="bg-c">e</div>
+      <div class="price-old">de R$ 67</div>
+      <div class="price-now"><small>R$</small>37</div>
+      <p class="price-desc">Manual completo + bônus de métricas</p>
+      <p class="price-desc" style="color:var(--muted);font-size:14px">Pagamento único · Acesso imediato · Pix, cartão ou boleto</p>
+      <a href="#" class="cta big" style="margin-top:24px">Garantir meu acesso →</a>
+      <div class="guarantee">🔒 Compra segura · entrega automática no seu e-mail</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap" style="max-width:760px">
+    <div class="eyebrow">Dúvidas</div>
+    <h2 class="sec" style="margin-bottom:30px">Perguntas frequentes</h2>
+    <div class="faq-item"><div class="faq-q">Como recebo o material após a compra?<span class="plus">+</span></div><div class="faq-a">Assim que o pagamento é confirmado, você recebe o acesso automaticamente por e-mail. Com Pix, costuma ser em poucos minutos.</div></div>
+    <div class="faq-item"><div class="faq-q">Preciso ter algum conhecimento prévio?<span class="plus">+</span></div><div class="faq-a">Nenhum. O manual foi feito justamente para quem nunca usou Stories. Começamos do zero, com linguagem simples e prints de cada passo.</div></div>
+    <div class="faq-item"><div class="faq-q">Funciona para iPhone e Android?<span class="plus">+</span></div><div class="faq-a">Sim. As funções dos Stories são as mesmas nos dois sistemas. As pequenas diferenças de tela estão indicadas no material.</div></div>
+    <div class="faq-item"><div class="faq-q">É um pagamento único ou assinatura?<span class="plus">+</span></div><div class="faq-a">Pagamento único. Você paga uma vez e o material é seu, com acesso vitalício.</div></div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="text-align:center;background:var(--ink);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <h2 class="sec" style="font-size:clamp(28px,4vw,46px)">Ninguém começa bom.<br>Começa <span class="neon">publicando.</span></h2>
+    <p class="lead" style="margin:18px auto 0">Tenha o mapa completo dos Stories na mão e pare de adiar.</p>
+    <a href="#comprar" class="cta big" style="margin-top:30px">Quero começar agora →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo">Contew</div>
+    <p style="margin-top:8px"><a href="https://www.contew.com.br">www.contew.com.br</a></p>
+    <p class="small">© Contew · Todos os direitos reservados</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click',()=>item.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
